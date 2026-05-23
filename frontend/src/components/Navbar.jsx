@@ -1,44 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
-const Navbar = ({ darkMode, toggleDark }) => {
+const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenu, setMobileMenu] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
-
-  // Track window width for responsive behavior
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-      if (window.innerWidth >= 1024) {
-        setMobileMenu(false);
-      }
-    };
-    
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileMenu && windowWidth < 1024) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [mobileMenu, windowWidth]);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
-      const sections = ['home', 'about', 'projects', 'skills', 'experience', 'contact'];
+      const sections = ['home', 'about', 'projects', 'skills', 'contact'];
       const scrollPosition = window.scrollY + 100;
-      
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -50,16 +21,26 @@ const Navbar = ({ darkMode, toggleDark }) => {
         }
       }
     };
-    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setMobileMenu(false);
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false);
     }
   };
 
@@ -71,170 +52,104 @@ const Navbar = ({ darkMode, toggleDark }) => {
     { id: 'contact', label: 'Contact', icon: 'fas fa-envelope' }
   ];
 
-  const isDesktop = windowWidth >= 1024; // Show full menu on 1024px and above
-
   return (
     <>
-      <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
-        isScrolled 
-          ? darkMode 
-            ? 'bg-[#0a0a0a]/95 backdrop-blur-xl shadow-2xl border-b border-cyan-500/20' 
-            : 'bg-white/95 backdrop-blur-xl shadow-2xl border-b border-gray-200'
-          : 'bg-transparent'
+      <nav className={`fixed top-0 left-0 right-0 z-[500] transition-all duration-300 ${
+        isScrolled ? 'bg-[#0a0a0a]/95 backdrop-blur-md border-b border-cyan-500/20 py-3' : 'bg-transparent py-5'
       }`}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-3 sm:py-4">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex justify-between items-center">
             {/* Logo */}
-            <div className="relative group cursor-pointer z-10" onClick={() => scrollToSection('home')}>
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-300"></div>
-              <div className="relative text-xl sm:text-2xl font-bold">
-                <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Haritha G</span>
-                
-              </div>
+            <div 
+              className="text-xl md:text-2xl font-bold cursor-pointer" 
+              onClick={() => scrollToSection('home')}
+            >
+              <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+                Haritha G
+              </span>
             </div>
 
-            {/* Desktop Navigation - Only on large screens */}
-            {isDesktop && (
-              <div className="flex items-center gap-4 lg:gap-6">
-                {navItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`relative px-2 lg:px-3 py-2 font-medium transition-all duration-300 group text-sm lg:text-base ${
-                      activeSection === item.id 
-                        ? 'text-cyan-400' 
-                        : darkMode 
-                          ? 'text-gray-300 hover:text-cyan-400' 
-                          : 'text-gray-600 hover:text-cyan-500'
-                    }`}
-                  >
-                    <i className={`${item.icon} mr-1 lg:mr-2 text-xs lg:text-sm`}></i>
-                    {item.label}
-                    {activeSection === item.id && (
-                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full animate-pulse"></span>
-                    )}
-                  </button>
-                ))}
-                
-                {/* Dark/Light Mode Toggle Button - Desktop */}
-                <button
-                  onClick={toggleDark}
-                  className={`relative w-8 h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    darkMode 
-                      ? 'bg-gray-800 text-yellow-400 hover:bg-gray-700' 
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
-                  aria-label="Toggle dark mode"
-                >
-                  {darkMode ? (
-                    <i className="fas fa-sun text-sm lg:text-lg"></i>
-                  ) : (
-                    <i className="fas fa-moon text-sm lg:text-lg"></i>
-                  )}
-                </button>
-              </div>
-            )}
-
-            {/* Mobile Navigation - Only on small screens */}
-            {!isDesktop && (
-              <div className="flex items-center gap-2 sm:gap-3">
-                {/* Dark Mode Toggle for Mobile */}
-                <button
-                  onClick={toggleDark}
-                  className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    darkMode 
-                      ? 'bg-gray-800 text-yellow-400' 
-                      : 'bg-gray-200 text-gray-700'
-                  }`}
-                  aria-label="Toggle dark mode"
-                >
-                  {darkMode ? (
-                    <i className="fas fa-sun text-sm sm:text-lg"></i>
-                  ) : (
-                    <i className="fas fa-moon text-sm sm:text-lg"></i>
-                  )}
-                </button>
-                
-                {/* Hamburger Menu Button */}
-                <button 
-                  onClick={() => setMobileMenu(!mobileMenu)} 
-                  className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    darkMode 
-                      ? 'bg-gray-800 text-white hover:bg-gray-700' 
-                      : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
-                  }`}
-                  aria-label="Menu"
-                >
-                  <i className={`fas ${mobileMenu ? 'fa-times' : 'fa-bars'} text-sm sm:text-lg`}></i>
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile Menu Overlay */}
-      {mobileMenu && !isDesktop && (
-        <>
-          <div 
-            className="fixed inset-0 bg-black/50 backdrop-blur-md z-[90]"
-            onClick={() => setMobileMenu(false)}
-          ></div>
-          
-          {/* Mobile Menu Panel */}
-          <div 
-            className="fixed top-0 right-0 h-full w-64 sm:w-80 z-[95] animate-slide-in"
-            style={{
-              backgroundColor: darkMode ? '#0a0a0a' : '#ffffff',
-              backdropFilter: 'blur(12px)',
-              boxShadow: '-10px 0 30px rgba(0, 0, 0, 0.3)'
-            }}
-          >
-            {/* Mobile Menu Header */}
-            <div className="flex justify-between items-center p-4 sm:p-5 border-b border-cyan-500/20">
-              <div className="text-lg sm:text-xl font-bold">
-                <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Menu</span>
-              </div>
-              <button 
-                onClick={() => setMobileMenu(false)} 
-                className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                  darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
-                }`}
-              >
-                <i className="fas fa-times text-base sm:text-lg"></i>
-              </button>
-            </div>
-            
-            {/* Mobile Menu Items */}
-            <div className="py-4 space-y-1">
+            {/* Desktop Menu */}
+            <div className="hidden lg:flex items-center gap-8">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`w-full text-left py-3 sm:py-4 px-5 sm:px-6 flex items-center gap-3 transition ${
-                    activeSection === item.id 
-                      ? 'bg-cyan-500/10 text-cyan-400 border-l-4 border-cyan-400' 
-                      : darkMode 
-                        ? 'text-gray-300 hover:bg-white/5' 
-                        : 'text-gray-600 hover:bg-gray-100'
+                  className={`text-sm font-medium transition-colors hover:text-cyan-400 ${
+                    activeSection === item.id ? 'text-cyan-400' : 'text-gray-300'
                   }`}
                 >
-                  <i className={`${item.icon} w-5 text-base sm:text-lg`}></i>
-                  <span className="font-medium text-sm sm:text-base">{item.label}</span>
+                  {item.label}
                 </button>
               ))}
             </div>
-            
-            {/* Mobile Menu Footer */}
-            <div className={`absolute bottom-0 left-0 right-0 p-4 text-center text-xs ${
-              darkMode ? 'text-gray-500' : 'text-gray-400'
-            } border-t border-cyan-500/20`}>
-              <p>© 2026 Haritha Shree G</p>
-              <p className="text-[10px] mt-1">Full Stack Developer</p>
+
+            {/* Hamburger Button */}
+            <button 
+              className="lg:hidden w-10 h-10 rounded-lg flex items-center justify-center bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300" 
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} text-white text-xl`}></i>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      <div 
+        className={`fixed inset-0 bg-black/95 backdrop-blur-lg z-[550] lg:hidden transition-all duration-300 ${
+          isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setIsOpen(false)}
+      />
+      
+      <div 
+        className={`fixed top-0 right-0 h-full w-72 bg-[#0a0a0a] z-[560] lg:hidden shadow-2xl transform transition-transform duration-300 ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex flex-col h-full">
+          {/* Header - Reduced padding */}
+          <div className="px-6 py-4 border-b border-white/10">
+            <div className="flex justify-between items-center">
+              <span className="text-base font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+                Menu
+              </span>
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="w-7 h-7 rounded-lg flex items-center justify-center bg-white/5 hover:bg-white/10 transition-colors"
+              >
+                <i className="fas fa-times text-gray-400 text-xs"></i>
+              </button>
             </div>
           </div>
-        </>
-      )}
+
+          {/* Navigation Items - Reduced spacing */}
+          <div className="flex-1 py-4 px-4">
+            <div className="space-y-1">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all duration-200 ${
+                    activeSection === item.id 
+                      ? 'bg-cyan-500/10 text-cyan-400 border-l-2 border-cyan-400' 
+                      : 'text-gray-300 hover:bg-white/5'
+                  }`}
+                >
+                  <i className={`${item.icon} w-4 text-sm`}></i>
+                  <span className="font-medium text-sm">{item.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Footer - Reduced padding */}
+          <div className="px-6 py-4 border-t border-white/10">
+            <p className="text-gray-500 text-xs text-center">© 2026 Haritha Shree G</p>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

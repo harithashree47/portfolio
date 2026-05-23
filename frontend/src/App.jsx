@@ -12,15 +12,6 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
-  const [darkMode, setDarkMode] = React.useState(() => {
-    try {
-      const saved = localStorage.getItem('theme');
-      return saved === 'dark';
-    } catch (e) {
-      return true;
-    }
-  });
-
   useEffect(() => {
     // Initialize AOS with INFINITE / EVERY TIME SCROLL configuration
     AOS.init({
@@ -38,6 +29,10 @@ function App() {
       AOS.refresh();
     });
     
+    // Set dark mode as default
+    document.body.classList.add('dark');
+    document.body.classList.remove('light');
+    
     return () => {
       window.removeEventListener('resize', () => {
         AOS.refresh();
@@ -45,23 +40,9 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add('dark');
-      document.body.classList.remove('light');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.body.classList.add('light');
-      document.body.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [darkMode]);
-
-  const toggleDark = () => setDarkMode(!darkMode);
-
   return (
     <>
-      <Navbar darkMode={darkMode} toggleDark={toggleDark} />
+      <Navbar />
       <Hero />
       <About />
       <Skills />

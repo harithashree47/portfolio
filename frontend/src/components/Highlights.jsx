@@ -7,28 +7,30 @@ AOS.init();
 const highlightsData = [
   { 
     icon: "fas fa-rocket", 
-    title: "Production Apps", 
-    desc: "Built real-world production-level applications used by actual businesses",
+    title: "Production Websites", 
+    desc: "Built real-world production-level websites used by actual businesses",
     gradient: "from-cyan-500 to-blue-500"
   },
-  { 
-    icon: "fas fa-print", 
-    title: "Hardware Integration", 
-    desc: "Experience with thermal printer integration for retail billing systems",
+   { 
+    icon: "fas fa-user-shield", 
+    title: "Role-Based Systems", 
+    desc: "Implemented multi-role systems (User, Admin, Super Admin) with secure access control",
     gradient: "from-blue-500 to-indigo-500"
   },
-  { 
-    icon: "fas fa-store", 
-    title: "Business Impact", 
-    desc: "Developed systems used daily in real business environments",
-    gradient: "from-indigo-500 to-purple-500"
+   { 
+    icon: "fas fa-envelope", 
+    title: "Email Automation", 
+    desc: "Integrated email services using Nodemailer for notifications and user communication",
+    gradient: "from-pink-500 to-rose-500"
   },
+ 
   { 
-    icon: "fas fa-users", 
-    title: "Client Projects", 
-    desc: "Successfully delivered 6+ live client projects with real requirements",
-    gradient: "from-purple-500 to-pink-500"
+    icon: "fas fa-database", 
+    title: "Fullstack Development", 
+    desc: "Experienced in building end-to-end applications with frontend, backend, and database integration",
+    gradient: "from-rose-500 to-red-500"
   }
+  
 ];
 
 const Highlights = () => {
@@ -45,7 +47,7 @@ const Highlights = () => {
         <div data-aos="fade-up" className="text-center mb-12">
           {/* Glowing Badge */}
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 px-4 py-2 rounded-full mb-4 border border-cyan-500/30">
-            <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+         
             <span className="text-sm font-medium text-cyan-400">✨ Why Choose Me</span>
           </div>
           
@@ -95,16 +97,17 @@ const Highlights = () => {
         </div>
 
         {/* Bottom CTA - FIXED: changed </span> to </i> */}
-        <div data-aos="fade-up" className="text-center mt-12">
-          <div className="inline-flex items-center gap-3 glass-card px-6 py-3 rounded-full">
-            <i className="fas fa-medal text-cyan-400 text-xl"></i>
-            <span className="text-gray-300">
-              <span className="text-cyan-400 font-semibold">6+ Real Projects</span> • 
-              <span className="text-purple-400 font-semibold ml-2"> Hardware Integration</span> • 
-              <span className="text-pink-400 font-semibold ml-2"> Business Impact</span>
-            </span>
-          </div>
-        </div>
+       <div data-aos="fade-up" className="text-center mt-12">
+  <div className="inline-flex items-center gap-3 glass-card px-6 py-3 rounded-full">
+    <i className="fas fa-medal text-cyan-400 text-xl"></i>
+    <span className="text-gray-300">
+     
+      <span className="text-blue-400 font-semibold ml-2"> Role-Based Systems</span> • 
+      <span className="text-purple-400 font-semibold ml-2"> Fullstack Development</span> • 
+      <span className="text-pink-400 font-semibold ml-2"> Business Impact</span>
+    </span>
+  </div>
+</div>
       </div>
     </section>
   );

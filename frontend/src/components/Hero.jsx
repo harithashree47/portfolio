@@ -15,6 +15,19 @@ const Hero = () => {
     "NestJS Developer",
   ];
 
+  // Tools array with gradient colors
+  const tools = [
+    { name: "React",  },
+    { name: "Node.js", },
+    { name: "MongoDB",  },
+    { name: "NestJS",  },
+     { name: "Bootstrap",  },
+      { name: "Prisma ORM",  },
+    { name: "Tailwind CSS",  }
+  ];
+  
+  const [currentToolIndex, setCurrentToolIndex] = useState(0);
+
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
@@ -45,6 +58,15 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, [charIndex, isDeleting, wordIndex]);
 
+  // Auto-rotate carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentToolIndex((prev) => (prev + 1) % tools.length);
+    }, 2500);
+    
+    return () => clearInterval(interval);
+  }, [tools.length]);
+
   const scrollToProjects = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -62,7 +84,6 @@ const Hero = () => {
           {/* Left Content */}
           <div data-aos="fade-right" className="w-full">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 border border-cyan-500/30">
-              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-cyan-400 rounded-full"></span>
               <span className="text-xs sm:text-sm font-medium text-cyan-400 whitespace-nowrap">✨ Available for Opportunities</span>
             </div>
             
@@ -100,9 +121,9 @@ const Hero = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-cyan-500/20">
               {[
-                { value: '6+', label: 'Live Projects', icon: 'fas fa-rocket' },
-                { value: '4+', label: 'Happy Clients', icon: 'fas fa-users' },
-                { value: '100%', label: 'Real Impact', icon: 'fas fa-chart-line' }
+                { value: '5+', label: 'Projects Built', icon: 'fas fa-rocket' },
+                { value: '3+', label: 'Client Projects', icon: 'fas fa-users' },
+                { value: '100%', label: 'Real-World Use Cases', icon: 'fas fa-chart-line' }
               ].map((stat, idx) => (
                 <div key={idx} className="text-center group cursor-pointer">
                   <i className={`${stat.icon} text-base sm:text-xl md:text-2xl text-cyan-400 mb-1 sm:mb-2 block group-hover:scale-110 transition`}></i>
@@ -113,7 +134,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Content */}
+          {/* Right Content - Gradient Carousel */}
           <div data-aos="fade-left" className="flex justify-center mt-6 lg:mt-0 w-full">
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl blur-xl opacity-30 group-hover:opacity-70 transition duration-500"></div>
@@ -124,7 +145,56 @@ const Hero = () => {
                     <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full flex items-center justify-center animate-bounce">
                       <i className="fas fa-code text-base sm:text-xl md:text-2xl text-white"></i>
                     </div>
-                    <p className="mt-2 sm:mt-3 md:mt-4 text-xs sm:text-sm text-gray-400 whitespace-nowrap">Full Stack Developer</p>
+                    
+                    {/* GRADIENT CAROUSEL */}
+                    <div className="mt-4 sm:mt-6 pt-3 sm:pt-4">
+                      <p className="text-[10px] sm:text-xs text-gray-400 mb-3">Tech Stack</p>
+                      
+                      {/* Carousel Container */}
+                      <div className="relative h-12 sm:h-14 flex items-center justify-center">
+                        {tools.map((tool, idx) => (
+                          <div
+                            key={tool.name}
+                            className={`
+                              absolute transition-all duration-500 ease-in-out
+                              ${idx === currentToolIndex 
+                                ? 'opacity-100 translate-y-0 scale-100' 
+                                : 'opacity-0 translate-y-8 scale-90'
+                              }
+                            `}
+                          >
+                            <div className={`
+                              bg-gradient-to-r ${tool.gradient} 
+                              px-3 sm:px-4 py-1.5 sm:py-2 rounded-full
+                              shadow-lg
+                            `}>
+                              <span className="text-white font-semibold text-xs sm:text-sm whitespace-nowrap">
+                                {tool.name}
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      
+                      {/* Navigation Dots */}
+                      <div className="flex justify-center gap-1.5 sm:gap-2 mt-3 sm:mt-4">
+                        {tools.map((tool, idx) => (
+                          <button
+                            key={tool.name}
+                            onClick={() => setCurrentToolIndex(idx)}
+                            className="group relative"
+                          >
+                            <div className={`
+                              h-1.5 rounded-full transition-all duration-300
+                              ${idx === currentToolIndex 
+                                ? 'w-6 bg-gradient-to-r from-cyan-400 to-purple-400' 
+                                : 'w-1.5 bg-gray-600 group-hover:bg-gray-400'
+                              }
+                            `} />
+                          </button>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -162,6 +232,7 @@ const Hero = () => {
           
           h1 div {
             word-break: break-word;
+            
           }
         }
       `}</style>

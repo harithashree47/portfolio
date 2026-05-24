@@ -6,21 +6,20 @@ AOS.init();
 
 const About = () => {
   const achievements = [
-    { icon: "fas fa-briefcase", text: "Live Projects", value: "6+" },
-    { icon: "fas fa-microchip", text: "Hardware Integration", value: "100%" },
-    { icon: "fas fa-chart-line", text: "Efficiency Boost", value: "70%" },
-    { icon: "fas fa-users", text: "Happy Clients", value: "100%" }
-  ];
+  { icon: "fas fa-briefcase", text: "Projects Built", value: "5+" },
+  { icon: "fas fa-user-shield", text: "Role-Based Systems", value: "100%" },
+  { icon: "fas fa-chart-line", text: "Efficiency Boost", value: "70%" },
+  { icon: "fas fa-users", text: "Client Projects", value: "3+" }
+];
 
-  const expertise = [
-    "React.js & Modern Frontend",
-    "NestJS Backend Architecture",
-    "Prisma & Database Design",
-    "Hardware Integration",
-    "System Design",
-    "Real-time Applications"
-  ];
-
+const expertise = [
+  "React.js & Modern Frontend",
+  "Node.js & Express.js",
+  "NestJS Backend Architecture",
+  "Prisma & Database Design",
+  "Role-Based Authentication",
+  "System Design"
+];
   return (
     <section id="about" className="py-20">
       <div className="container">
@@ -131,14 +130,14 @@ const About = () => {
         </div>
 
         {/* Bottom Badge */}
-        <div data-aos="fade-up" className="mt-10 text-center">
-          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-gray-700">
-            <span className="text-xs text-gray-400">
-              <span className="text-cyan-400 font-semibold">6+ Real Projects</span> delivered with 
-              <span className="text-purple-400 font-semibold"> 100% client satisfaction</span>
-            </span>
-          </div>
-        </div>
+       <div data-aos="fade-up" className="mt-10 text-center">
+  <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-gray-700">
+    <span className="text-xs text-gray-400">
+      <span className="text-cyan-400 font-semibold">5+ Real Projects</span> built with 
+      <span className="text-purple-400 font-semibold"> real business use cases</span>
+    </span>
+  </div>
+</div>
       </div>
     </section>
   );

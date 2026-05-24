@@ -1,88 +1,172 @@
-
-
-
 // projects-data.js
+
 export const projectsData = [
   {
-    id: 1,
-    title: "Annai Packers and Movers",
-    description: "Professional logistics service website with booking interface",
-    category: "fullstack",
-    techStack: ["React.js", "Tailwind CSS", "NestJS"],
-    features: ["Service listing", "Contact/booking interface", "Responsive design"],
-    impact: "Helps customers easily access relocation services with 40% faster inquiries",
-    icon: "fas fa-truck",
-    gradient: "from-cyan-500 to-blue-500",
-    isHighlight: false
-  },
+  id: 1,
+  title: "Annai Packers and Movers",
+  description:
+    "Logistics service website where users can submit relocation requests, and the business team contacts them for service confirmation",
+  category: "fullstack",
+  techStack: ["React", "Tailwind CSS", "NestJS", "Nodemailer"],
+  features: [
+    "Service listing with detailed information",
+    "Customer enquiry/booking form",
+    "Email notification using Nodemailer",
+    "Customer details collection (name, phone, location, address)",
+    "Responsive design for all devices"
+  ],
+  impact:
+    "Simplified customer enquiry process and enabled faster response through automated email notifications, improving service conversion rate",
+  icon: "fas fa-truck",
+  gradient: "from-cyan-500 to-blue-500",
+  isHighlight: false,
+  liveUrl: "https://annaipackers.luisant.cloud/",
+  githubUrl: "",
+  image: ""
+},
+{
+  id: 2,
+  title: "Bharath National Computer Services",
+  description:
+    "Full-featured computer parts e-commerce platform where users can browse products, add items to cart, and place orders, with a complete admin dashboard for managing business operations",
+  category: "fullstack",
+  techStack: [
+    "React",
+    "Tailwind CSS",
+    "NestJS",
+    "Prisma ORM",
+    "PostgreSQL"
+  ],
+  features: [
+    "Product listing with detailed view",
+    "Add to cart and order placement",
+    "User authentication and account management",
+    "Admin dashboard for order tracking",
+    "Order status updates (Pending, Processing, Delivered)",
+    "User details and order history management"
+  ],
+  impact:
+    "Digitized sales process with real-time order tracking, improving business efficiency and increasing online leads by 60%",
+  icon: "fas fa-laptop",
+  gradient: "from-blue-500 to-indigo-500",
+  isHighlight: true,
+  liveUrl: "https://www.bnctechservices.com/",
+  githubUrl: "",
+  image: ""
+},
+ {
+  id: 3,
+  title: "Velan Thulabaram Gold Rate System",
+  description:
+    "Gold rate calculation system where admin sets the gold rate master, and the application automatically calculates total amount based on weight and percentage using a touch-based interface",
+  category: "fullstack",
+  techStack: ["React", "NestJS", "Prisma ORM"],
+  features: [
+    "Gold rate master setup",
+    "Touch-based input for weight and percentage",
+    "Automatic price calculation",
+    "Fast and responsive billing UI",
+    "Thermal printer support for bill printing"
+  ],
+  impact:
+    "Used in retail shop for fast and accurate billing, improving calculation efficiency by 70%",
+  icon: "fas fa-gem",
+  gradient: "from-purple-500 to-pink-500",
+  isHighlight: true,
+  liveUrl: "",
+  githubUrl: "",
+  image: ""
+},
   {
-    id: 2,
-    title: "Bharath National Computer Services",
-    description: "Complete computer parts e-commerce platform with admin dashboard for managing orders, users, and products",
-    category: "fullstack",
-    techStack: ["ReactJS", "Tailwind CSS", "NestJS", "Prisma ORM", "PostgreSQL"],
-    features: [
-      "Admin dashboard", 
-      "Order management system", 
-      "User management", 
-      "Product inventory management",
-      "Service booking"
-    ],
-    impact: "Streamlined business operations with 60% increase in online leads and efficient order processing",
-    icon: "fas fa-laptop",
-    gradient: "from-blue-500 to-indigo-500",
-    isHighlight: true
-  },
-  {
-    id: 3,
-    title: "Velan Thulabaram Gold Rate System",
-    description: "Real-time gold rate calculation with hardware integration for retail billing",
-    category: "fullstack",
-    techStack: ["React.js", "NestJS", "Prisma ORM", "Thermal Printer API"],
-    features: ["Touch-based input", "Thermal printer integration", "Fast responsive UI", "Real-time rate calculation"],
-    impact: "Used in retail shop for billing automation, 70% efficiency increase",
-    icon: "fas fa-gem",
-    gradient: "from-purple-500 to-pink-500",
-    isHighlight: true
-  },
-  {
-    id: 4,
-    title: "WonNet Job Portal",
-    description: "Full-stack job portal system with complete job application workflow",
-    category: "fullstack",
-    techStack: ["Express JS", "React.js", "MongoDB", "JWT Authentication"],
-    features: ["Job posting", "Job application flow", "User role handling", "Resume upload"],
-    impact: "Complete understanding of backend workflows and system architecture",
-    icon: "fas fa-briefcase",
-    gradient: "from-pink-500 to-rose-500",
-    isHighlight: false
-  },
-  {
-    id: 5,
-    title: "Culinary House Restaurant",
-    description: "Interactive restaurant website with categorized menu and online ordering system",
-    category: "frontend",
-    techStack: ["React.js", "Tailwind CSS", "Framer Motion"],
-    features: ["Categorized food sections", "Interactive UI", "Clean layout", "Cart management"],
-    impact: "Improved user engagement and online ordering experience by 45%",
-    icon: "fas fa-utensils",
-    gradient: "from-rose-500 to-red-500",
-    isHighlight: false
-  }
+  id: 4,
+  title: "WonNet Job Portal",
+  description:
+    "Full-stack job portal system with role-based access where users can register, apply for jobs, and track application status, while admins and super admins manage jobs and users",
+  category: "fullstack",
+  techStack: ["React", "Node.js", "Express.js", "MongoDB", "Nodemailer"],
+  features: [
+    "User registration and login authentication",
+    "Job application with resume upload",
+    "Application status tracking (Applied, Reviewed, Selected, Rejected)",
+    "Email notifications using Nodemailer",
+    "Admin panel for job posting and category management",
+    "Super admin control for admin creation and user management",
+    "Role-based access (User, Admin, Super Admin)"
+  ],
+  impact:
+    "Built a complete job application workflow system with role-based architecture, improving understanding of real-world backend logic and user management",
+  icon: "fas fa-briefcase",
+  gradient: "from-pink-500 to-rose-500",
+  isHighlight: true,
+  liveUrl: "",
+  githubUrl: "",
+  image: ""
+},
+ {
+  id: 5,
+  title: "Culinary House Restaurant",
+  description:
+    "Restaurant web application where users can register, browse menu items, and place food orders, with an admin panel to manage food items, categories, and user orders",
+  category: "fullstack",
+  techStack: ["React", "Tailwind CSS", "Node.js", "Express.js", "MongoDB"],
+  features: [
+    "User registration and login authentication",
+    "Browse categorized food menu",
+    "Add to cart and place orders",
+    "Order status tracking",
+    "Admin panel for food and category management",
+    "User management and order tracking by admin"
+  ],
+  impact:
+    "Enhanced online food ordering experience with structured menu management and real-time order handling",
+  icon: "fas fa-utensils",
+  gradient: "from-rose-500 to-red-500",
+  isHighlight: false,
+  liveUrl: "",
+  githubUrl: "",
+  image: ""
+}
 ];
 
 export const skillsData = {
-  frontend: ["React.js", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap", "Framer Motion"],
+  frontend: [
+    "React",
+    "JavaScript",
+    "HTML5",
+    "CSS3",
+    "Tailwind CSS",
+    "Bootstrap"
+  ],
   backend: ["NestJS", "Node.js", "Express.js", "JWT Authentication"],
   database: ["Prisma ORM", "PostgreSQL", "MongoDB"],
   tools: ["Git", "GitHub", "VS Code", "Postman", "REST APIs"]
 };
 
 export const highlightsData = [
-  { icon: "fas fa-rocket", title: "Production Apps", desc: "Built real-world production-level applications used by actual businesses" },
-  { icon: "fas fa-print", title: "Hardware Integration", desc: "Experience with thermal printer integration for retail billing systems" },
-  { icon: "fas fa-store", title: "Business Impact", desc: "Developed systems used daily in real business environments" },
-  { icon: "fas fa-users", title: "Client Projects", desc: "Successfully delivered 6+ live client projects with real requirements" },
-  { icon: "fas fa-shopping-cart", title: "E-commerce Solutions", desc: "Built full-featured e-commerce platforms with admin panels" },
-  { icon: "fas fa-chart-line", title: "Admin Dashboards", desc: "Created comprehensive admin interfaces for business management" }
+  {
+    icon: "fas fa-rocket",
+    title: "Production Apps",
+    desc:
+      "Built real-world production-level applications used by actual businesses"
+  },
+ 
+  {
+    icon: "fas fa-store",
+    title: "Business Impact",
+    desc:
+      "Developed systems used daily in real business environments"
+  },
+ 
+  {
+    icon: "fas fa-shopping-cart",
+    title: "E-commerce Solutions",
+    desc:
+      "Built full-featured e-commerce platforms with admin panels"
+  },
+  {
+    icon: "fas fa-chart-line",
+    title: "Admin Dashboards",
+    desc:
+      "Created comprehensive admin interfaces for business management"
+  }
 ];

@@ -5,7 +5,7 @@ const Footer = () => {
   
   const socialLinks = [
     { icon: "fab fa-github", url: "https://github.com/harithashree47", color: "hover:text-cyan-400" },
-    { icon: "fab fa-linkedin", url: "www.linkedin.com/in/harithashree-gr01", color: "hover:text-blue-400" },
+    { icon: "fab fa-linkedin", url: "https://www.linkedin.com/in/harithashree-gr01/", color: "hover:text-blue-400" },
   { icon: "fas fa-envelope", url: "mailto:harithashree3047@gmail.com", color: "hover:text-red-400" },
   ];
 

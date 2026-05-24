@@ -23,7 +23,7 @@ const Contact = () => {
   };
 
   const contactMethods = [
-    { icon: "fas fa-envelope", label: "Email", value: "harithashree3046@gmail.com", color: "from-cyan-500 to-blue-500" },
+    { icon: "fas fa-envelope", label: "Email", value: "harithashree3047@gmail.com", color: "from-cyan-500 to-blue-500" },
     { icon: "fab fa-github", label: "GitHub", value: "harithashree47", color: "from-blue-500 to-indigo-500" },
     { icon: "fab fa-linkedin", label: "LinkedIn", value: "harithashree-gr01", color: "from-indigo-500 to-purple-500" }
   ];
@@ -65,7 +65,9 @@ const Contact = () => {
               <div className="mt-6 p-4 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                  <span className="text-sm text-cyan-400">Available for freelance work</span>
+                 <span className="text-sm text-cyan-400">
+  Available for Freelance • Full-time • Contract
+</span>
                 </div>
               </div>
             </div>

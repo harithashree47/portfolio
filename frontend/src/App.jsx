@@ -10,6 +10,7 @@ import Projects from './components/Projects';
 
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Highlights from './components/Highlights';
 
 function App() {
   useEffect(() => {
@@ -47,7 +48,7 @@ function App() {
       <About />
       <Skills />
       <Projects />
-     
+     <Highlights />
       
       <Contact />
       <Footer />

@@ -32,9 +32,12 @@ const ProjectCard = ({ project, index }) => {
         </div>
         
         {/* Icon */}
-        <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${project.gradient} flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6`}>
-          <i className={`${project.icon} text-white text-2xl`}></i>
-        </div>
+       <div 
+  onClick={() => project.liveUrl && window.open(project.liveUrl, "_blank")}
+  className={`w-14 h-14 rounded-xl bg-gradient-to-r ${project.gradient} flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 cursor-pointer`}
+>
+  <i className={`${project.icon} text-white text-2xl`}></i>
+</div>
         
         {/* Title */}
         <h3 className="text-xl font-bold mb-2 group-hover:text-cyan-400 transition">
@@ -94,7 +97,7 @@ const Projects = () => {
   
   const filters = [
     { id: 'all', label: 'All Projects', icon: 'fas fa-th-large' },
-    { id: 'frontend', label: 'Frontend', icon: 'fas fa-laptop-code' },
+  
     { id: 'fullstack', label: 'Full Stack', icon: 'fas fa-layer-group' },
     { id: 'featured', label: 'Featured', icon: 'fas fa-star' }
   ];

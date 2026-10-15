@@ -19,10 +19,7 @@ export const projectsData = [
     "Simplified customer enquiry process and enabled faster response through automated email notifications, improving service conversion rate",
   icon: "fas fa-truck",
   gradient: "from-cyan-500 to-blue-500",
-  isHighlight: false,
-  liveUrl: "https://annaipackers.luisant.cloud/",
-  githubUrl: "",
-  image: ""
+  isHighlight: false
 },
 {
   id: 2,
@@ -49,10 +46,7 @@ export const projectsData = [
     "Digitized sales process with real-time order tracking, improving business efficiency and increasing online leads by 60%",
   icon: "fas fa-laptop",
   gradient: "from-blue-500 to-indigo-500",
-  isHighlight: true,
-  liveUrl: "https://www.bnctechservices.com/",
-  githubUrl: "",
-  image: ""
+  isHighlight: true
 },
  {
   id: 3,
@@ -72,10 +66,7 @@ export const projectsData = [
     "Used in retail shop for fast and accurate billing, improving calculation efficiency by 70%",
   icon: "fas fa-gem",
   gradient: "from-purple-500 to-pink-500",
-  isHighlight: true,
-  liveUrl: "",
-  githubUrl: "",
-  image: ""
+  isHighlight: true
 },
   {
   id: 4,
@@ -97,10 +88,7 @@ export const projectsData = [
     "Built a complete job application workflow system with role-based architecture, improving understanding of real-world backend logic and user management",
   icon: "fas fa-briefcase",
   gradient: "from-pink-500 to-rose-500",
-  isHighlight: true,
-  liveUrl: "",
-  githubUrl: "",
-  image: ""
+  isHighlight: true
 },
  {
   id: 5,
@@ -121,10 +109,7 @@ export const projectsData = [
     "Enhanced online food ordering experience with structured menu management and real-time order handling",
   icon: "fas fa-utensils",
   gradient: "from-rose-500 to-red-500",
-  isHighlight: false,
-  liveUrl: "",
-  githubUrl: "",
-  image: ""
+  isHighlight: false
 }
 ];
 

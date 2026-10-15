@@ -33,8 +33,7 @@ const ProjectCard = ({ project, index }) => {
         
         {/* Icon */}
        <div 
-  onClick={() => project.liveUrl && window.open(project.liveUrl, "_blank")}
-  className={`w-14 h-14 rounded-xl bg-gradient-to-r ${project.gradient} flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 cursor-pointer`}
+  className={`w-14 h-14 rounded-xl bg-gradient-to-r ${project.gradient} flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6`}
 >
   <i className={`${project.icon} text-white text-2xl`}></i>
 </div>
